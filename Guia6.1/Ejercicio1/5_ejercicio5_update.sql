@@ -37,7 +37,8 @@ BEGIN
 END
 
 --d- Actualice el registro
-UPDATE Figuras SET Area=@Area, Ancho=@Ancho, Largo=@Largo, Radio=@Radio
+UPDATE Figuras 
+SET Area=@Area, Ancho=@Ancho, Largo=@Largo, Radio=@Radio
 WHERE Id=@Id_Figura
 
 --d- Realice la consulta de la tabla Figuras.

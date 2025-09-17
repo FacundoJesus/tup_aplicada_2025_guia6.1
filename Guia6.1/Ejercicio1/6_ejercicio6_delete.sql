@@ -20,6 +20,7 @@ WHERE Id=@Id_Figura
 SELECT * FROM Figuras WHERE Id=@Id_Figura;
 
 GO
+
 USE master;
 
 

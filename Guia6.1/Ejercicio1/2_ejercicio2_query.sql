@@ -7,7 +7,7 @@ USE Guia6_1Ejercicio1_db;
 GO
 
 -- listar todas las figuras
-
+--Consulta de todos los registros (getAll)
 SELECT f.Id,
 		Tipo = CASE WHEN f.Tipo = 1 THEN 'Rectangulo'
 			 WHEN f.Tipo = 2 THEN 'Circulo'
@@ -22,5 +22,4 @@ ORDER BY f.Id
 
 GO
 
-USE master
-GO
+USE master;

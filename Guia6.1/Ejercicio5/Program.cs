@@ -4,6 +4,8 @@ namespace Ejercicio5
 {
     internal class Program
     {
+        //Task me permite usar la palabra reservada "await"
+        // async para que la conexion sea asincrona
         async static Task Main(string[] args)
         {
             #region ejemplos de valores parametros a modificar
@@ -56,5 +58,6 @@ WHERE Id=@Id_Figura
                 Console.WriteLine(ex.ToString());
             }
         }
+        
     }
 }

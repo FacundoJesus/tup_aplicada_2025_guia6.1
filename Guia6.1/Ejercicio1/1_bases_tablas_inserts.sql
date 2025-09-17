@@ -1,4 +1,5 @@
-﻿USE master
+﻿--Creación de la base de datos, tablas y valores iniciales
+USE master
 
 GO
 
@@ -49,5 +50,4 @@ FROM Figuras f;
 
 GO
 
-USE master
-GO
+USE master;

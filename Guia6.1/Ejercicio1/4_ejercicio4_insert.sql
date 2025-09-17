@@ -29,5 +29,4 @@ SELECT * FROM Figuras;
 
 GO
 
-USE master
-GO
+USE master;
