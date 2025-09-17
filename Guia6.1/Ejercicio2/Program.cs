@@ -3,21 +3,32 @@ namespace Ejercicio2
 {
     internal class Program
     {
-        //Task me permite usar la palabra reservada await
+        //Task me permite usar la palabra reservada "await"
         // async para que la conexion sea asincrona
         async static Task Main(string[] args)
         {
-            //Definir la consulta que yo quiero
-            string query = @"SELECT f.Id,f.Tipo,f.Area,f.Ancho,f.Largo,f.Radio FROM 
-Figuras f ORDER BY f.Area";
-            //Cadena de conexion -ver ssms-
-            string stringConnection = "Data Source=DESKTOP-TEDVE8G;Initial Catalog=Guia6_1Ejercicio1_db;Integrated Security=True;Pooling=False;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Name=vscode-mssql;Connect Retry Count=1;Connect Retry Interval=10;Command Timeout=30";
+            //Consulta que realizo
+            string query = @"SELECT f.Id,
+		Tipo = CASE WHEN f.Tipo = 1 THEN 'Rectangulo'
+			 WHEN f.Tipo = 2 THEN 'Circulo'
+			 ELSE 'No identificado'
+			 END,
+	   f.Area,
+	   f.Ancho,
+	   f.Largo,
+	   f.Radio
+FROM Figuras f
+ORDER BY f.Id";
+
+            //Cadena de conexion -VER nombre de la base de datos y servidor.
+            string stringConnection = "Data Source=DESKTOP-KSDEE1M;Initial Catalog=Guia6_1Ejercicio1_db;Integrated Security=True;Pooling=False;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Name=vscode-mssql;Connect Retry Count=1;Connect Retry Interval=10;Command Timeout=30";
 
             //Creo la conexion
             SqlConnection conn = new SqlConnection(stringConnection);
-            await conn.OpenAsync(); //Abre la conexion //asíncrono - el await espera a que termine.
-
-            using SqlCommand cmd = new SqlCommand(query, conn); //Creo un comando
+            //Abre la conexion //asíncrono - el await espera a que termine.
+            await conn.OpenAsync();
+            //Creo un comando con la consulta y la conexion.
+            using SqlCommand cmd = new SqlCommand(query, conn); 
 
             using SqlDataReader dataReader = await cmd.ExecuteReaderAsync();
 
@@ -25,6 +36,7 @@ Figuras f ORDER BY f.Area";
             while (await dataReader.ReadAsync())
             {
                 int id = dataReader["Id"] != DBNull.Value ? Convert.ToInt32(dataReader["Id"]) : 0;
+
                 string? tipo = dataReader["Tipo"] != DBNull.Value ? Convert.ToString(dataReader["Tipo"]) : null;
                 double? area = Convert.ToInt32(dataReader["Area"] != DBNull.Value ? dataReader["Area"] : null);
                 double? ancho = Convert.ToInt32(dataReader["Ancho"] != DBNull.Value ? dataReader["Ancho"] : null);

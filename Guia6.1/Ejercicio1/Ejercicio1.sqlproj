@@ -65,5 +65,6 @@
     <None Include="4_ejercicio4_insert.sql" />
     <None Include="6_ejercicio6_delete.sql" />
     <None Include="7_ejercicio7_sp.sql" />
+    <None Include="5_ejercicio5_update.sql" />
   </ItemGroup>
 </Project>

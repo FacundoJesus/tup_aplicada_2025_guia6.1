@@ -9,7 +9,10 @@ GO
 -- listar todas las figuras
 
 SELECT f.Id,
-	   f.Tipo,
+		Tipo = CASE WHEN f.Tipo = 1 THEN 'Rectangulo'
+			 WHEN f.Tipo = 2 THEN 'Circulo'
+			 ELSE 'No identificado'
+			 END,
 	   f.Area,
 	   f.Ancho,
 	   f.Largo,
