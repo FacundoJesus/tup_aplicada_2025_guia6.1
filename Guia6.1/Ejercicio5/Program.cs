@@ -30,7 +30,7 @@ UPDATE Figuras SET Area=@Area, Ancho=@Ancho, Largo=@Largo, Radio=@Radio
 WHERE Id=@Id_Figura
 ";
 
-            string stringConnection = "Data Source=DESKTOP-KSDEE1M;Initial Catalog=Guia6_1Ejercicio1_db;Integrated Security=True;Pooling=False;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Name=vscode-mssql;Connect Retry Count=1;Connect Retry Interval=10;Command Timeout=30";
+            string stringConnection = "Data Source=DESKTOP-TEDVE8G;Initial Catalog=Guia6_1Ejercicio1_db;Integrated Security=True;Pooling=False;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Name=vscode-mssql;Connect Retry Count=1;Connect Retry Interval=10;Command Timeout=30";
 
             try
             {
@@ -48,10 +48,10 @@ WHERE Id=@Id_Figura
                 #endregion
 
                 object? objectCantidad = await cmd.ExecuteScalarAsync();
+                
+                int cantidad = await cmd.ExecuteNonQueryAsync();
 
-                int cantidad = Convert.ToInt32(objectCantidad);
-
-                Console.WriteLine($"La cantidad de registros modificadas fue:{cantidad}");
+                Console.WriteLine($"La cantidad de registros modificados fue:{cantidad}");
             }
             catch (Exception ex)
             {

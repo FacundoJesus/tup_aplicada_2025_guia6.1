@@ -66,5 +66,6 @@ SELECT f.Id,
 	   f.Radio
 FROM Figuras f
 
+GO 
 
 USE master;
